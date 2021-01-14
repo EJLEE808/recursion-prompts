@@ -7,7 +7,35 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  var tracker = 1;
+
+  var innerFunction = function () {
+    if (n === 1) {
+      return tracker;
+    }
+    if (n < 0) {
+      tracker = null;
+    }
+    if (n > 1) {
+      tracker = tracker * n;
+      factorial(n - 1);
+    }
+    return tracker;
+  }
+  innerFunction(n);
+
+
+  return tracker;
+
+  // ID what will make function need to continue
 };
+console.log(factorial(4));
+
+// input: n
+// output: n!
+// edge case: NaN? Negative N? or Not an integer
+
+
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
