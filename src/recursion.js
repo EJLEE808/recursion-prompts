@@ -6,24 +6,32 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
-var factorial = function(n) {
+var factorial = function(num) {
   var tracker = 1;
-
-  var innerFunction = function () {
-    if (n === 1) {
+  console.log('start');
+  var innerFunction = function (n) {
+    console.log(n, 'n');
+    if (n < 0) {
+        console.log('n < 0');
+      tracker = null;
       return tracker;
     }
-    if (n < 0) {
-      tracker = null;
+    if (n === 1 || n === 0) {
+      console.log('base');
+      return tracker;
     }
     if (n > 1) {
+      var recursiveN = n - 1;
       tracker = tracker * n;
-      factorial(n - 1);
+      console.log(recursiveN, 'recursiveN');
+      innerFunction(recursiveN);
     }
+    console.log('tracker', tracker);
     return tracker;
   }
-  innerFunction(n);
 
+  innerFunction(num);
+  console.log('return tracker');
 
   return tracker;
 
