@@ -85,7 +85,6 @@ var arraySum = function(array) {
     //   sum += array
     // }
 
-
   // loop through arr
   for (var i = 0; i <= array.length - 1; i++) {
     // if current item is array
@@ -120,8 +119,6 @@ var isEven = function(n) {
   if (n === 0) {
     return true;
   }
-
-
   if (n > 0) {
     console.log('recursed');
     if (n === 1) {
@@ -136,9 +133,6 @@ var isEven = function(n) {
     }
     return isEven(n - 2);
   }
-
-
-
   if (n < 0) {
     if (n === -1) {
       return false;
@@ -148,15 +142,35 @@ var isEven = function(n) {
     }
     return isEven(n + 2);
   }
-
-
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+// 5. Sum all integers below a given integer.
 var sumBelow = function(n) {
+
+
+  if (n === 0) {
+    return 0;
+  }
+
+  if (n > 0) {
+    return n - 1 + sumBelow(n - 1);
+  }
+
+  if (n < 0) {
+    return n + 1 + sumBelow(n + 1);
+  }
+
 };
+
+
+
+
+
+
+
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
