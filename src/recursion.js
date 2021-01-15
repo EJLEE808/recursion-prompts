@@ -65,25 +65,91 @@ var sum = function(array) {
   if (array.length === 1) {
     return array[0];
   } else {
-    console.log(array.slice(0, array.length), 'slice');
+    // console.log(array.slice(0, array.length), 'slice');
     return array[array.length - 1] + sum(array.slice(0, array.length - 1));
   }
 };
-console.log(sum([1, 2, 3, 4]));
+// console.log(sum([1, 2, 3, 4]));
 
+  // [[1, 2], 3, 4];
 // 3. Sum all numbers in an array containing nested arrays.
-// arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-
-
-  if (array.length === 1) {
-    return (array[0]);
+  var sum = 0;
+  if (array.length === 0) {
+    return 0;
   }
 
+    // base case
+    // if (array.length === 1) {
+    //   console.log(array[0], 'array[0]')
+    //   sum += array
+    // }
+
+
+  // loop through arr
+  for (var i = 0; i <= array.length - 1; i++) {
+    // if current item is array
+    if (Array.isArray(array[i])) {
+      // recurse
+      sum += arraySum(array[i]);
+
+    } else {
+      sum += array[i];
+    }
+  }
+  // console.log(sum);
+  return sum;
 };
+arraySum([1,[2,3],[[4]],5]); // 15
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  // input: n
+  // output: bool
+  // edgecase: should work for positive and neg number, what if NaN??? not tested
+  // constraint: use recursion, no mod
+
+  // high lv strat
+  // call it
+  // subtract 2
+  // base case, if 1 or 0
+  // if n > 0
+  // if n < 0
+  // if n > 0
+  // add 2 until -1 or 0
+  if (n === 0) {
+    return true;
+  }
+
+
+  if (n > 0) {
+    console.log('recursed');
+    if (n === 1) {
+      // var evenOrOdd =
+      console.log('false');
+      return false;
+    }
+    if (n === 0) {
+      // var evenOrOdd =
+      console.log('true');
+      return true;
+    }
+    return isEven(n - 2);
+  }
+
+
+
+  if (n < 0) {
+    if (n === -1) {
+      return false;
+    }
+    if (n === 0) {
+      return true;
+    }
+    return isEven(n + 2);
+  }
+
+
 };
 
 // 5. Sum all integers below a given integer.
@@ -121,7 +187,7 @@ var palindrome = function(string) {
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
-// modulo (%) operator.
+// modulo () operator.
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
