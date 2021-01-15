@@ -120,15 +120,15 @@ var isEven = function(n) {
     return true;
   }
   if (n > 0) {
-    console.log('recursed');
+    // console.log('recursed');
     if (n === 1) {
       // var evenOrOdd =
-      console.log('false');
+      // console.log('false');
       return false;
     }
     if (n === 0) {
       // var evenOrOdd =
-      console.log('true');
+      // console.log('true');
       return true;
     }
     return isEven(n - 2);
@@ -177,13 +177,45 @@ var sumBelow = function(n) {
 var range = function(x, y) {
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64. Here, 8 is the base and 2 is the exponent.
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+
+
+  if (exp === 0) {
+    return 1;
+  }
+  if (exp > 0) {
+    return base * exponent(base, exp - 1);
+  }
+
+
+  if (exp < 0) {
+    var result =  (1 / base) * (exponent(base, exp + 1)).toFixed(4);
+    console.log(typeof result);
+    return result;
+
+  }
+
 };
+
+
+
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
