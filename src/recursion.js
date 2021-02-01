@@ -6,142 +6,30 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
-// var factorial = function(num) {
-//   var tracker = 1;
-//   console.log('start');
-//   var innerFunction = function (n) {
-//     console.log(n, 'n');
-//     if (n < 0) {
-//         console.log('n < 0');
-//       tracker = null;
-//       return tracker;
-//     }
-//     if (n === 1 || n === 0) {
-//       console.log('base');
-//       return tracker;
-//     }
-//     if (n > 1) {
-//       var recursiveN = n - 1;
-//       tracker = tracker * n;
-//       console.log(recursiveN, 'recursiveN');
-//       innerFunction(recursiveN);
-//     }
-//     console.log('tracker', tracker);
-//     return tracker;
-//   }
-//   innerFunction(num);
-//   console.log('return tracker');
-//   return tracker;
-//   // ID what will make function need to continue
-// };
-// console.log(factorial(4));
-var factorial = function (n) {
-  if (n < 0) {
-    return null;
-  }
-  if (n === 0) {
-    return 1;
-  }
-  if (n === 1) {
-    return n;
-  } else {
-    return n * factorial(n - 1);
-  }
-  return n;
-};
 
-// input: n
-// output: n!
-// edge case: NaN? Negative N? or Not an integer
+var factorial = function (n) {
+
+};
 
 
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-  if (array.length === 0) {
-    return 0;
-  }
-  if (array.length === 1) {
-    return array[0];
-  } else {
-    // console.log(array.slice(0, array.length), 'slice');
-    return array[array.length - 1] + sum(array.slice(0, array.length - 1));
-  }
+
 };
 // console.log(sum([1, 2, 3, 4]));
 
   // [[1, 2], 3, 4];
 // 3. Sum all numbers in an array containing nested arrays.
 var arraySum = function(array) {
-  var sum = 0;
-  if (array.length === 0) {
-    return 0;
-  }
 
-    // base case
-    // if (array.length === 1) {
-    //   console.log(array[0], 'array[0]')
-    //   sum += array
-    // }
-
-  // loop through arr
-  for (var i = 0; i <= array.length - 1; i++) {
-    // if current item is array
-    if (Array.isArray(array[i])) {
-      // recurse
-      sum += arraySum(array[i]);
-
-    } else {
-      sum += array[i];
-    }
-  }
-  // console.log(sum);
-  return sum;
 };
-arraySum([1,[2,3],[[4]],5]); // 15
+
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  // input: n
-  // output: bool
-  // edgecase: should work for positive and neg number, what if NaN??? not tested
-  // constraint: use recursion, no mod
 
-  // high lv strat
-  // call it
-  // subtract 2
-  // base case, if 1 or 0
-  // if n > 0
-  // if n < 0
-  // if n > 0
-  // add 2 until -1 or 0
-  if (n === 0) {
-    return true;
-  }
-  if (n > 0) {
-    // console.log('recursed');
-    if (n === 1) {
-      // var evenOrOdd =
-      // console.log('false');
-      return false;
-    }
-    if (n === 0) {
-      // var evenOrOdd =
-      // console.log('true');
-      return true;
-    }
-    return isEven(n - 2);
-  }
-  if (n < 0) {
-    if (n === -1) {
-      return false;
-    }
-    if (n === 0) {
-      return true;
-    }
-    return isEven(n + 2);
-  }
 };
 
 // 5. Sum all integers below a given integer.
@@ -151,17 +39,7 @@ var isEven = function(n) {
 var sumBelow = function(n) {
 
 
-  if (n === 0) {
-    return 0;
-  }
 
-  if (n > 0) {
-    return n - 1 + sumBelow(n - 1);
-  }
-
-  if (n < 0) {
-    return n + 1 + sumBelow(n + 1);
-  }
 
 };
 
@@ -175,24 +53,7 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-  // high lvl strat
-  // .concat adds arrays
-  // base case: x === y return [y]
 
-  //edge cases
-  if (x === y) {
-    return [];
-  }
-  if (y - x === 1) {
-    return [];
-  }
-
-  if (x + 2 === y) {
-    // console.log('meow');
-    return y - 1;
-  }
-
-  return [x + 1].concat(range(x + 1, y));
 };
 
 
@@ -215,20 +76,7 @@ var range = function(x, y) {
 var exponent = function(base, exp) {
 
 
-  if (exp === 0) {
-    return 1;
-  }
-  if (exp > 0) {
-    return base * exponent(base, exp - 1);
-  }
 
-
-  if (exp < 0) {
-    var result =  (1 / base) * (exponent(base, exp + 1)).toFixed(4);
-    console.log(typeof result);
-    return result;
-
-  }
 
 };
 
