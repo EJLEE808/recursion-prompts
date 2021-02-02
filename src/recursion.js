@@ -8,6 +8,13 @@
 // factorial(5); // 120
 
 var factorial = function (n) {
+  if (n === 1 || n === 0) {
+    return 1;
+  }
+  if (n < 0) {
+    return null;
+  }
+  return n * factorial(n - 1);
 
 };
 
@@ -16,34 +23,98 @@ var factorial = function (n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  if (array.length === 0) {
+    return 0;
+  }
+  if (array.length === 1) {
+    return array[0];
+  }
+  return array[0] + sum(array.slice(1));
 
 };
 // console.log(sum([1, 2, 3, 4]));
 
-  // [[1, 2], 3, 4];
-// 3. Sum all numbers in an array containing nested arrays.
-var arraySum = function(array) {
 
-};
+// 3. Sum all numbers in an array containing nested arrays.
+
+  var arraySum = function(array) {
+    var tracker = 0;
+
+    if (array.length === 0) {
+      return tracker;
+    }
+    if (array.length === 1 && !Array.isArray(array[0])) {
+      return array[0];
+    }
+
+    // What happens when we're not in base case?
+    for (var i = 0; i < array.length; i++) {
+      if (typeof array[i] === 'number') {
+        tracker += array[i];
+      }
+      if (Array.isArray(array[i])) {
+        tracker += arraySum(array[i]);
+      }
+    }
+    return tracker;
+  };
+
 
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-
+  if (n === 0) {
+    return true;
+  }
+  if (n === 1 || n === -1) {
+    return false;
+  }
+  if (n > 0) {
+    if (n > 1) {
+      return isEven(n - 2);
+    }
+  }
+  if (n < 0) {
+    if (n < -1) {
+      return isEven(n + 2);
+    }
+  }
 };
+
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-// 5. Sum all integers below a given integer.
 var sumBelow = function(n) {
+  if (n === 0) {
+    return 0;
+  }
 
+  if (n > 0) {
+    return n + sumBelow(n - 1) - 1;
+  }
 
-
+  if (n < 0) {
+    return n + sumBelow(n + 1) + 1;
+  }
 
 };
 
+// var test1 = [1, 2, 3, 4]; // 10
+// var test2 = [1, 2, []]; // 3
+// var test3 = [1, 2, [3]]; // 6
+// var test4 = [[[[1]]]]; // 1
+// var test5 = [1, 2, [3, 4]]; // 10
+// var test6 = [[1, 2], [3, 4]]; // 10
+// var test7 = [[]];
 
+// console.log(arraySum(test7));
+
+
+
+// var testa = [[1],[2,3],[[4]],5]; // 15
+// var testb = [[12,[[34],[56]],78]]; // 180
+// var testc = [3,[0,[34,[7,[18]]]]]; // 62
 
 
 
@@ -51,12 +122,32 @@ var sumBelow = function(n) {
 
 
 // 6. Get the integers within a range (x, y).
-// range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  if (x === y) {
+    return [];
+  }
+  if (x + 1 === y) {
+    return [];
+  }
+  if (x - 1 === y) {
+    return [];
+  }
+
+  if (x + 2 === y) {
+    return [x + 1];
+  }
+  if (x - 2 === y) {
+    return [x - 1];
+  }
+  if (x < y) {
+    return [x + 1].concat(range(x + 1, y))
+  }
+
+  if (x > y) {
+    return [x - 1].concat(range(x - 1, y));
+  }
 
 };
-
-
 
 
 
