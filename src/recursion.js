@@ -346,12 +346,40 @@ var countKeysInObj = function(obj, key) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
+// 23. Write a function that counts the number of times a value occurs in an object.
 var countValuesInObj = function(obj, value) {
+  console.log('start');
+
+  var tracker = 0;
+
+  for (var key in obj) {
+    var isItNotArray = Array.isArray(obj[key]) === false;
+    var isItObject = typeof obj[key] === true;
+    // console.log('isItNotArray: ', isItNotArray, 'isItObject: ', isItObject);
+    if (obj[key] === value) {
+      tracker++;
+    }
+    if (Array.isArray(obj[key]) === false && typeof obj[key] === 'object') {
+      tracker += countValuesInObj(obj[key], value);
+    }
+  }
+
+  return tracker;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+  for (var key in obj) {
+    if (key === oldKey) {
+      obj[newKey] = obj[oldKey];
+      delete obj[oldKey];
+    }
+    if (!Array.isArray(obj[key]) && typeof obj[key] === 'object') {
+      replaceKeysInObj(obj[key], oldKey, newKey);
+    }
+  }
+  return obj;
 };
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
